@@ -1,0 +1,59 @@
+#editorSettings {
+    height: 25px;
+    width: 100%;
+    color: rgb(163, 163, 163);
+    background: rgb(46, 46, 70);
+    border-bottom: 1px solid rgb(255, 217, 0);
+    font-size: 12px;
+    line-height: 25px;
+    padding: 0 15px;
+}
+
+#textEditor {
+    position: static;
+    height: calc(100vh - 31px);
+    width: 100%;
+    background: rgb(41, 41, 61);
+    border-right: 2px solid rgb(34, 34, 49);
+    border-bottom: 1px solid rgb(255, 217, 0);
+}
+#editor { 
+    position: absolute;
+    top: 59px;
+    right: 0;
+    bottom: 1px;
+    left: 200px;
+}
+
+.inputText {
+    -webkit-appearance: none;
+    background: rgb(34, 34, 49);
+    color: rgb(255, 217, 0);
+    width: 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 11px;
+    padding: 4px 4px;
+    text-align: center;
+}
+.inputText:focus {
+    outline: none;
+}
+
+.btn {
+    border: none;
+    border-radius: 5px;
+    background: rgb(34, 34, 49);
+    color: rgb(255, 217, 0);
+    padding: 2px 6px;
+}
+.btn:hover {
+    background: rgb(25, 25, 36);
+}
+.btn:active {
+    color: rgb(34, 34, 49);
+    background: rgb(255, 217, 0);
+}
+.btn:focus {
+    outline: none;
+}

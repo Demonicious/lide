@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>LIDE</title>
+        <link rel="stylesheet" type="text/css" href="style/main.css" />
+        <link rel="stylesheet" type="text/css" href="style/topbar.css" />
+        <link rel="stylesheet" type="text/css" href="style/toolbar.css" />
+        <link rel="stylesheet" type="text/css" href="style/fs.css" />
+        <link rel="stylesheet" type="text/css" href="style/editor.css" />
+        <link rel="stylesheet" type="text/css" href="style/font-awesome.min.css" />
+        <link rel="stylesheet" type="text/css" href="style/bootstrap-grid.min.css" />
+    </head>
+    <body>
+        <div class="everything">
+            <div id="topBar">
+                <div id="topBarTitle"><span>LIDE</span></div>
+                <div id="topBarIcon"></div>
+                <ul id="topBarControls">
+                    <li id="fileDropper"><a class="topBarControlsButton">File</a></li>
+                    <li id="editDropper"><a class="topBarControlsButton">Edit</a></li>
+                    <li id="helpDropper"><a class="topBarControlsButton">Help</a></li>
+                </ul>
+                <ul id="topBarWindowControls">
+                    <li id="min-btn"><a class="topBarWindowControlsButton">-</a></li>
+                    <li id="close-btn"><a class="topBarWindowControlsButton">x</a></li>
+                </ul>
+            </div>
+            <div id="fileDrop" class="drop hiddenDrop">
+                <li class="dropElement">New File</li>
+                <li class="dropElement">Open File</li>
+                <div class="dropHorizontalRule"></div>
+                <li class="dropElement">Save</li>
+                <li class="dropElement">Save As</li>
+                <li class="dropElement">Save All</li>
+                <div class="dropHorizontalRule"></div>
+                <li id="menu-close-btn" class="dropElement">Exit</li>
+            </div>
+            <div id="editDrop" class="drop hiddenDrop">
+                <li class="dropElement">Undo</li>
+                <li class="dropElement">Redo</li>
+                <div class="dropHorizontalRule"></div>
+                <li class="dropElement">Cut</li>
+                <li class="dropElement">Copy</li>
+                <li class="dropElement">Paste</li>
+                <div class="dropHorizontalRule"></div>
+                <li class="dropElement">Find</li>
+                <li class="dropElement">Replace</li>
+            </div>
+            <div id="helpDrop" class="drop hiddenDrop">
+                <li class="dropElement">About</li>
+                <li class="dropElement">On GitHub</li>
+            </div>
+            <div id="lide">
+                <div id="fs">
+                    <span id="fsText">Project Explorer</span>
+                </div>
+                <div id="toolBar">
+                    <div title="New File" class="toolBarButton"><i class="fa fa-plus" aria-hidden="true"></i></div>
+                    <div title="Open File" class="toolBarButton"><i class="fa fa-file-text" aria-hidden="true"></i></div>
+                    <div title="Save All" class="toolBarButton"><i class="fa fa-floppy-o" aria-hidden="true"></i></div>
+                    <div title="Find" class="toolBarButton"><i class="fa fa-search" aria-hidden="true"></i></div>
+                    <div title="Replace" class="toolBarButton"><i class="fa fa-wrench" aria-hidden="true"></i></div>
+                    <div title="Run" class="toolBarButton"><i class="fa fa-play" aria-hidden="true"></i></div>
+                    <div title="Settings" class="toolBarButton"><i class="fa fa-gear" aria-hidden="true"></i></div>
+                </div>
+                <div id="editorSettings"><span id="editorCurrentFile" style="padding-left: 15px;">index.py</span>
+                <span style="float: right;">
+                    Font Size: <input class="inputText" id="fontSizeText" type="number" value="14" min="1" name="fontSizeText" />
+                    Theme: <select id="themeList" style="width: 90px !important;" class="inputText" name="themeList">
+                            <option value="dracula">Dracula</option>
+                            <option value="monokai">Monokai</option>
+                            <option value="eclipse">Eclipse</option>
+                            <option value="tomorrow_night">Tomorrow Night</option>
+                          </select>
+                    <button id="applySettingsButton" class="btn"><i class="fa fa-check"></i></button>
+                </span>
+                </div>
+                <div id="textEditor">
+<div id="editor">a = 10
+b = 20
+c = a + b
+
+print(c)
+</div>
+                </div>
+            </div>
+            <!--<h1>Hello World!</h1>
+            We are using node <script>document.write(process.versions.node)</script>,
+            Chrome <script>document.write(process.versions.chrome)</script>,
+            and Electron <script>document.write(process.versions.electron)</script>.-->
+            <footer>
+                <script type="text/javascript" src="scripts/jquery.min.js"></script>
+                <script type="text/javascript" src="ace/ace.js"></script>
+                <script type="text/javascript" src="editorSettings.json"></script>
+                <script src="ace/themes/monokai.js" type="text/javascript" charset="utf-8"></script>
+                <script src="ace/modes/python.js" type="text/javascript" charset="utf-8"></script>
+                <script type="text/javascript">
+                    (function () {
+                        var editor = ace.edit("editor");
+                        themeChange("dracula");
+                        fontChange(14);
+                        editor.setShowPrintMargin(false);
+                        editor.getSession().setMode("ace/mode/python");
+                        const { BrowserWindow } = require("electron").remote;
+
+                        function fontChange(size) {
+                            document.getElementById('editor').style.fontSize= size +"px";
+                        }
+                        function themeChange(theme) {
+                            editor.setTheme("ace/theme/" + theme);
+                        }
+
+                        function hideDrops() {
+                            let drops = document.getElementsByClassName("drop");
+                            for (var i = 0; i < drops.length; i++) {
+                                drops[i].classList.add("hiddenDrop");
+                            }
+                        }
+                        function drop(id) {
+                            document.querySelector("#" + id).classList.toggle("hiddenDrop");
+                        }
+
+                        function init() {
+                            // Minimize task
+                            document.getElementById("min-btn").addEventListener("click", (e) => {
+                                var window = BrowserWindow.getFocusedWindow();
+                                window.minimize();
+                            });
+
+                            // Close app
+                            document.getElementById("close-btn").addEventListener("click", (e) => {
+                                var window = BrowserWindow.getFocusedWindow();
+                                window.close();
+                            });
+                            document.getElementById("menu-close-btn").addEventListener("click", (e) => {
+                                var window = BrowserWindow.getFocusedWindow();
+                                window.close();
+                            });
+                            document.getElementById("fileDropper").addEventListener("click", (e) => {
+                                hideDrops();
+                                drop("fileDrop");
+                            })
+                            document.getElementById("editDropper").addEventListener("click", (e) => {
+                                hideDrops();
+                                drop("editDrop");
+                            })
+                            document.getElementById("helpDropper").addEventListener("click", (e) => {
+                                hideDrops();
+                                drop("helpDrop");
+                            })
+                            document.getElementById("applySettingsButton").addEventListener("click", (e) => {
+                                fontChange(document.getElementById("fontSizeText").value);
+                                themeChange(document.getElementById("themeList").value);
+                            })
+                            window.addEventListener("click", (e) => {
+                                if (!(e.target.id.includes("Drop") || e.target.className.includes("ControlsButton") || e.target.className.includes("Drop"))) {
+                                    hideDrops();
+                                }
+                            })
+                        };
+                        document.onreadystatechange =  () => {
+                            if (document.readyState == "complete") {
+                                init();
+                            }
+                        };
+                    })();
+                </script> 
+            </footer>
+        </div>
+    </body>
+</html>

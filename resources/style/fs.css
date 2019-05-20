@@ -1,0 +1,24 @@
+#fs {
+    position: static;
+    float: left;
+    height: calc(100vh - 31px);
+    width: 155px;
+    background: rgb(41, 41, 61);
+    border-right: 2px solid rgb(34, 34, 49);
+    border-bottom: 1px solid rgb(255, 217, 0);
+    -webkit-user-select: none; /* Safari */        
+    -moz-user-select: none; /* Firefox */
+    -ms-user-select: none; /* IE10+/Edge */
+    user-select: none; /* Standard */
+    cursor: default;
+}
+
+#fsText {
+    text-align: center;
+    color: rgb(163, 163, 163);
+    font-size: 12px;
+    line-height: 25px;
+    display: block;
+    background: rgb(46, 46, 70);
+    border-bottom: 1px solid rgb(255, 217, 0);
+}

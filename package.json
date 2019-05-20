@@ -1,0 +1,29 @@
+{
+  "name": "demon-lide",
+  "version": "0.0.1",
+  "description": "A Light Python IDE - Written in Electron",
+  "main": "main.js",
+  "scripts": {
+    "start": "electron ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Demonicious/lide.git"
+  },
+  "keywords": [
+    "ide",
+    "light",
+    "python",
+    "text",
+    "editor"
+  ],
+  "author": "demonicious <demoncious@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Demonicious/lide/issues"
+  },
+  "homepage": "https://github.com/Demonicious/lide#readme",
+  "dependencies": {
+    "electron": "^5.0.1"
+  }
+}
