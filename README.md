@@ -11,7 +11,7 @@ A Light IDE Built in Electron. Experimental Project (Yes I know its a Stupid Nam
 - [x] Add a Functional Text Editor
 - [ ] Make It Fully Usable
 
-Optionally
+##### Optionally
 
 - [ ] Add Other Languages Support
 - [ ] Add a Theme Creation Tool
