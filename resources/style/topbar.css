@@ -85,6 +85,8 @@
     border-radius: 0 0 5px 5px;
     position: absolute;
     top: 31px;
+    position: absolute;
+    z-index: 500;
 }
 #fileDrop {
     left: 33px;

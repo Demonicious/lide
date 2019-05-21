@@ -22,3 +22,30 @@
     background: rgb(46, 46, 70);
     border-bottom: 1px solid rgb(255, 217, 0);
 }
+
+.fsFile {
+    color: rgb(163, 163, 163);
+    line-height: 25px;
+    font-size: 11px;
+    background: rgb(46, 46, 70);
+    border-bottom: 1px solid rgb(34, 34, 49);
+    display: block;
+    padding: 0 7px;
+}
+.fsFile:hover {
+    background: rgb(34, 34, 49);
+    transition: ease 0.3s;
+}
+.fsActiveFile {
+    color: rgb(255, 217, 0) !important;
+    background: rgb(34, 34, 49) !important;
+}
+.fsFileArrow {
+    padding-right: 5px;
+}
+.show {
+    display: inline-block;
+}
+.hide {
+    display: none;
+}
